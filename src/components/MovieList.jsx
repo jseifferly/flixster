@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import '../styles/MovieList.css'
+import LoadButton from "./LoadButton";
 
 //API Info for fetch
 const URL = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte={min_date}&release_date.lte={max_date}'
@@ -41,7 +42,7 @@ export default function MovieList({data}) {
                 return <MovieCard title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
         </div>
-        <button className="loadMore">Load More</button>
+        <LoadButton />
         </>
     );
 
