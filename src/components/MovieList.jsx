@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Modal from "./Modal";
 import MovieCard from "./MovieCard";
 import '../styles/MovieList.css'
 import '../styles/LoadButton.css'
@@ -13,11 +14,13 @@ const options = {method: 'GET', headers: {accept: 'application/json',
 const imgURL = 'https://image.tmdb.org/t/p'
 const posterSize = '/w500'
 
-export default function MovieList({data}) {
+export default function MovieList() {
 
+    //Store state of movie data and current page num
     const [movieData, setMovieData] = useState([])
     const [pageNum, setPageNum] = useState(1)
 
+    //URL for featching data from API
     const URL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}`
 
     useEffect(() => {
@@ -40,14 +43,23 @@ export default function MovieList({data}) {
 
     const load = () => setPageNum(pageNum + 1)
 
+    //Modal state data
+    const [show, setShow] = useState(false);
+
+    const close = () => setShow(false);
+    const open = id => event => {
+        setShow(true);
+    }
+
     return (
         <>
         <div className="MovieList">
             {movieData.map((movie) => {
-                return <MovieCard title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
+                return <MovieCard loadModal={open(movie.id)} title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
         </div>
         <button className="loadMore" onClick={load}>Load More</button>
+        <Modal display={show} closeModal={close}/>
         </>
     );
 
