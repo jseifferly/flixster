@@ -1,5 +1,5 @@
 import Sort from "./Sort";
-import './SearchForm.css'
+import '../styles/SearchForm.css'
 
 function SearchForm() {
 
