@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import '../styles/MovieList.css'
+import '../styles/LoadButton.css'
 
 //API Info for fetch
-const URL = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte={min_date}&release_date.lte={max_date}'
 const API_KEY = import.meta.env.VITE_API_KEY
 const options = {method: 'GET', headers: {accept: 'application/json',
     Authorization: 'Bearer ' +  API_KEY}
@@ -16,14 +16,18 @@ const posterSize = '/w500'
 export default function MovieList({data}) {
 
     const [movieData, setMovieData] = useState([])
+    const [pageNum, setPageNum] = useState(1)
+
+    const URL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}`
 
     useEffect(() => {
         const fetchMovieData =  async () => {
             try{
-                const res = await fetch(URL, options)
+                var res = await fetch(URL, {method: 'GET', headers: {accept: 'application/json',
+                                            Authorization: `Bearer ${API_KEY}`}})
                 if(res.ok){
                     const data = await res.json();
-                    setMovieData(data.results)
+                    setMovieData([...movieData, ...data.results]);
                 }else{
                     throw new Error("API Not Responding")
                 }
@@ -32,7 +36,9 @@ export default function MovieList({data}) {
             }
         }
         fetchMovieData();
-    },[])
+    },[pageNum])
+
+    const load = () => setPageNum(pageNum + 1)
 
     return (
         <>
@@ -41,7 +47,7 @@ export default function MovieList({data}) {
                 return <MovieCard title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
         </div>
-        <button className="loadMore">Load More</button>
+        <button className="loadMore" onClick={load}>Load More</button>
         </>
     );
 
