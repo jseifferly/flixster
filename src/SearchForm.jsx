@@ -5,7 +5,7 @@ function SearchForm() {
 
     return (
         <div className="SearchForm">
-            <input type="text" placeholder="Search..." name="movieSearch"/>
+            <input type="text" placeholder="Search..." name="movieSearch" className="SearchBar"/>
             <button>Submit</button>
             <button>Clear</button>
             <Sort />
