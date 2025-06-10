@@ -10,7 +10,7 @@ const options = {method: 'GET', headers: {accept: 'application/json',
 }
 
 //Path info for movie posters
-const baseURL = 'https://image.tmdb.org/t/p'
+const imgURL = 'https://image.tmdb.org/t/p'
 const posterSize = '/w500'
 
 export default function MovieList({data}) {
@@ -35,11 +35,14 @@ export default function MovieList({data}) {
     },[])
 
     return (
+        <>
         <div className="MovieList">
             {movieData.map((movie) => {
-                return <MovieCard title={movie.title} image={baseURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
+                return <MovieCard title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
         </div>
+        <button className="loadMore">Load More</button>
+        </>
     );
 
 }
