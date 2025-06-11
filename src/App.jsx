@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import Header from './Header'
 import Body from './Body'
 import Footer from './Footer'
+import sort from './utils/utils'
 import './App.css'
+import { use } from 'react'
 
 //API Info for fetch
 const API_KEY = import.meta.env.VITE_API_KEY
@@ -21,9 +23,12 @@ const App = () => {
   //URL for featching data from API
   const nowPlayingURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}`
   const searchURL = `https://api.themoviedb.org/3/search/movie?query=${searchString}&page=${searchPage}`
-  
   const [url, setUrl] = useState(nowPlayingURL)
 
+  //States for sort
+  const [sortType, setSortType] = useState('none')
+
+  //Rerender movie data whenever url for api call changed and append to movie data
   useEffect(() => {
       const fetchMovieData =  async () => {
           try{
@@ -41,10 +46,12 @@ const App = () => {
       fetchMovieData();
   },[url])
 
+  //Update the url for loading more movies
   useEffect(() => {
     setUrl(nowPlayingURL)
   },[pageNum])
 
+  //Update page number to update the url
   const load = () => {
     setPageNum(pageNum + 1)
   }
@@ -66,11 +73,30 @@ const App = () => {
   const updateSearchTerm = evt => {
     setSearchString(evt.target.value)
   }
+  //**--------------------------------------------------**//
 
+
+  //**------------------Sort Function-------------------**//
+
+  useEffect(() => {
+  
+    console.log('do sort')
+    console.log(sortType)
+    const sortedMovies = sort(movieData,sortType)
+    setMovieData(sortedMovies)
+
+  },[sortType])
+
+
+  const updateSortType = evt => {
+    setSortType(evt.target.value)
+  }
+
+  //**--------------------------------------------------**//
 
   return (
     <div className="App">
-      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString}/>
+      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
       <Body data={movieData} load={load}/>
       <Footer />
     </div>

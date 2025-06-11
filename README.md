@@ -10,14 +10,14 @@ Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### REQUIRED FEATURES
 
-- [ ] **Display Movies**
+- [x] **Display Movies**
   - [x] Users can view a list of current movies from The Movie Database API in a grid view.
     - [x] Movie tiles should be reasonably sized (at least 6 playlists on your laptop when full screen; large enough that the playlist components detailed in the next feature are legible).
   - [x] For each movie displayed, users can see the movie's:
     - [x] Title
     - [x] Poster image
     - [x] Vote average
-  - [ ] Users can load more current movies by clicking a button which adds more movies to the grid without reloading the entire page. 
+  - [x] Users can load more current movies by clicking a button which adds more movies to the grid without reloading the entire page. 
 - [x] **Search Functionality**
   - [x] Users can use a search bar to search for movies by title.
   - [x] The search bar should include:
@@ -47,19 +47,19 @@ Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
       - [x] Release date
       - [x] Genres
       - [x] An overview
-  - [ ] Users can use a drop-down menu to sort movies.
-    - [ ] Drop-down allows movies to be sorted by:
-      - [ ] Title (alphabetic, A-Z)
-      - [ ] Release date (chronologically, most recent to oldest)
-      - [ ] Vote average (descending, highest to lowest)
-    - [ ] When a sort option is clicked, movies display in a grid according to selected criterion.
-  - [ ] Website displays:
+  - [x] Users can use a drop-down menu to sort movies.
+    - [x] Drop-down allows movies to be sorted by:
+      - [x] Title (alphabetic, A-Z)
+      - [x] Release date (chronologically, most recent to oldest)
+      - [x] Vote average (descending, highest to lowest)
+    - [x] When a sort option is clicked, movies display in a grid according to selected criterion.
+  - [x] Website displays:
     - [x] Header section
-    - [ ] Banner section
+    - [x] Banner section
     - [x] Search bar
     - [x] Movie grid
     - [x] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
   - [ ] **Deployment**
   - [ ] Website is deployed via Render.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
