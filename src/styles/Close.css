@@ -6,7 +6,7 @@
 }
 
 .Close:hover, .Close:focus {
-    color: white;
+    color: black;
     text-decoration: none;
     cursor: pointer;
 }

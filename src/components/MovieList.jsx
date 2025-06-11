@@ -7,8 +7,7 @@ import '../styles/LoadButton.css'
 //API Info for fetch
 const API_KEY = import.meta.env.VITE_API_KEY
 const options = {method: 'GET', headers: {accept: 'application/json',
-    Authorization: 'Bearer ' +  API_KEY}
-}
+                Authorization: `Bearer ${API_KEY}`}}
 
 //Path info for movie posters
 const imgURL = 'https://image.tmdb.org/t/p'
@@ -26,8 +25,7 @@ export default function MovieList() {
     useEffect(() => {
         const fetchMovieData =  async () => {
             try{
-                var res = await fetch(URL, {method: 'GET', headers: {accept: 'application/json',
-                                            Authorization: `Bearer ${API_KEY}`}})
+                var res = await fetch(URL, options)
                 if(res.ok){
                     const data = await res.json();
                     setMovieData([...movieData, ...data.results]);
@@ -45,12 +43,14 @@ export default function MovieList() {
 
     //Modal state data
     const [show, setShow] = useState(false);
+    const [mov, setMov] = useState({})
 
     const close = () => setShow(false);
     const open = id => event => {
+        setMov(movieData.find(movie => movie.id === id))
         setShow(true);
-    }
 
+    }
     return (
         <>
         <div className="MovieList">
@@ -59,7 +59,7 @@ export default function MovieList() {
             })};
         </div>
         <button className="loadMore" onClick={load}>Load More</button>
-        <Modal display={show} closeModal={close}/>
+        <Modal display={show} closeModal={close} movie={mov}/>
         </>
     );
 
