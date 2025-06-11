@@ -6,8 +6,8 @@ function SearchForm() {
     return (
         <div className="SearchForm">
             <input type="text" placeholder="Search..." name="movieSearch" className="SearchBar"/>
-            <button>Submit</button>
-            <button>Clear</button>
+            <button className="searchBtn">Submit</button>
+            <button className="searchBtn">Clear</button>
             <Sort />
         </div>
     );
