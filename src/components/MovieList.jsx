@@ -1,30 +1,34 @@
 import { useState, useEffect } from "react";
+import Modal from "./Modal";
 import MovieCard from "./MovieCard";
 import '../styles/MovieList.css'
-import LoadButton from "./LoadButton";
+import '../styles/LoadButton.css'
 
 //API Info for fetch
-const URL = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte={min_date}&release_date.lte={max_date}'
 const API_KEY = import.meta.env.VITE_API_KEY
 const options = {method: 'GET', headers: {accept: 'application/json',
-    Authorization: 'Bearer ' +  API_KEY}
-}
+                Authorization: `Bearer ${API_KEY}`}}
 
 //Path info for movie posters
 const imgURL = 'https://image.tmdb.org/t/p'
 const posterSize = '/w500'
 
-export default function MovieList({data}) {
+export default function MovieList() {
 
+    //Store state of movie data and current page num
     const [movieData, setMovieData] = useState([])
+    const [pageNum, setPageNum] = useState(1)
+
+    //URL for featching data from API
+    const URL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}`
 
     useEffect(() => {
         const fetchMovieData =  async () => {
             try{
-                const res = await fetch(URL, options)
+                var res = await fetch(URL, options)
                 if(res.ok){
                     const data = await res.json();
-                    setMovieData(data.results)
+                    setMovieData([...movieData, ...data.results]);
                 }else{
                     throw new Error("API Not Responding")
                 }
@@ -33,16 +37,29 @@ export default function MovieList({data}) {
             }
         }
         fetchMovieData();
-    },[])
+    },[pageNum])
 
+    const load = () => setPageNum(pageNum + 1)
+
+    //Modal state data
+    const [show, setShow] = useState(false);
+    const [mov, setMov] = useState({})
+
+    const close = () => setShow(false);
+    const open = id => event => {
+        setMov(movieData.find(movie => movie.id === id))
+        setShow(true);
+
+    }
     return (
         <>
         <div className="MovieList">
             {movieData.map((movie) => {
-                return <MovieCard title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
+                return <MovieCard loadModal={open(movie.id)} title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
         </div>
-        <LoadButton />
+        <button className="loadMore" onClick={load}>Load More</button>
+        <Modal display={show} closeModal={close} movie={mov}/>
         </>
     );
 
