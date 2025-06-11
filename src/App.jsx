@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
 import Body from './Body'
+import SideNav from './components/SideNav'
 import Footer from './Footer'
 import sort from './utils/utils'
 import './App.css'
-import { use } from 'react'
 
 //API Info for fetch
 const API_KEY = import.meta.env.VITE_API_KEY
@@ -15,6 +15,10 @@ const App = () => {
   //States to store the current movie data
   const [movieData, setMovieData] = useState([])
   const [pageNum, setPageNum] = useState(1)
+
+  //State Arrays for fav and watched movies
+  const [favMovies, setFavMovies] = useState([])
+  const [watchedMovies, setWatchedMovies] = useState([])
 
   //States to store search information
   const [searchPage, setSearchPage] = useState(1)
@@ -94,9 +98,14 @@ const App = () => {
 
   //**--------------------------------------------------**//
 
+  //**------------------Sort Function-------------------**//
+
+  //**--------------------------------------------------**//
+
   return (
     <div className="App">
       <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
+      <SideNav />
       <Body data={movieData} load={load}/>
       <Footer />
     </div>

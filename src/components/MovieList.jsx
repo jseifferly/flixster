@@ -22,11 +22,11 @@ export default function MovieList({data,load}) {
     }
     return (
         <>
-        <div className="MovieList">
+        <section className="MovieList">
             {data.map((movie) => {
                 return <MovieCard loadModal={open(movie.id)} title={movie.title} image={imgURL + posterSize + movie.poster_path} rating={movie.vote_average} key={movie.id}/>
             })};
-        </div>
+        </section>
         <button className="loadMore" onClick={load}>Load More</button>
         <Modal display={show} closeModal={close} movie={mov}/>
         </>

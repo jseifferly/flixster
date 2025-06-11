@@ -4,10 +4,10 @@ import './Header.css'
 function Header({search,clear,searchTermFunction,searchString, sortFunc}) {
 
     return (
-        <div className="Header">
+        <section className="Header">
             <h1>Flixster</h1>
             <SearchForm searchTerm={searchString} searchFunction={search} clearFunction={clear} searchTermFunc={searchTermFunction} sortFunc={sortFunc}/>
-        </div>
+        </section>
     );
 
 }

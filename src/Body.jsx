@@ -4,9 +4,9 @@ import './Body.css'
 function Body({data, load}) {
 
     return (
-        <div className="Body">
+        <section className="Body">
             <MovieList data={data} load={load}/>
-        </div>
+        </section>
     );
 
 }

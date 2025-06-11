@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
+import YoutubeEmbed from './YoutubeEmbed'
 
 export default function MovieDetails({movie}) {
 
     const [movieDetails, setMovieDetails] = useState(null)
+    const [videoData, setVideoData] = useState([])
+    const [videoId, setVideoId] = useState('')
 
     //API Information for call to movie details
     const url = `https://api.themoviedb.org/3/movie/${movie.id}?language=en-US`;
+    const videoUrl = `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`
     const API_KEY = import.meta.env.VITE_API_KEY
     const options = {method: 'GET', headers: {accept: 'application/json',
                 Authorization: `Bearer ${API_KEY}`}}
@@ -13,11 +17,14 @@ export default function MovieDetails({movie}) {
     useEffect(() => {
             const fetchMovieData =  async () => {
                 try{
-                    var res = await fetch(url, options)
-                    if(res.ok){
-                        const data = await res.json();
-                        console.log(data)
+                    var res1 = await fetch(url, options)
+                    var res2 = await fetch(videoUrl, options)
+                    if(res1.ok && res2.ok){
+                        const data = await res1.json();
+                        const vidData = await res2.json()
                         setMovieDetails(data);
+                        const video = vidData.results.find(video => video.type === "Trailer")
+                        setVideoId(video.key)
                     }else{
                         throw new Error("API Not Responding")
                     }
@@ -47,15 +54,16 @@ export default function MovieDetails({movie}) {
     }
 
     return (
-        <div>
+        <article>
             <h2 className="movieTitle">{movie.title}</h2>
             <img src={imgURL + posterSize + movie.backdrop_path} alt={movie.title + ' backdrop'} />
             <p><strong>Release Date:</strong> {movie.release_date}</p>
             <p><strong>Overview:</strong> {movie.overview}</p>
             <p><strong>Genres: </strong> {genreString(movieDetails.genres)}</p>
             <p><strong>Runtime: </strong> {movieDetails.runtime} minutes</p>
+            <YoutubeEmbed embedId={videoId}/>
 
-        </div>
+        </article>
     );
 
 }
