@@ -17,6 +17,7 @@ const App = () => {
   const [pageNum, setPageNum] = useState(1)
 
   //State Arrays for fav and watched movies
+  const [page,setPage] = useState('Home')
   const [favMovies, setFavMovies] = useState([])
   const [watchedMovies, setWatchedMovies] = useState([])
 
@@ -83,12 +84,8 @@ const App = () => {
   //**------------------Sort Function-------------------**//
 
   useEffect(() => {
-  
-    console.log('do sort')
-    console.log(sortType)
     const sortedMovies = sort(movieData,sortType)
     setMovieData(sortedMovies)
-
   },[sortType])
 
 
@@ -98,15 +95,27 @@ const App = () => {
 
   //**--------------------------------------------------**//
 
-  //**------------------Sort Function-------------------**//
+  //**---------------Like/Watch Function----------------**//
+
+  const openHome = () => {
+    setPage('Home')
+  }
+
+  const openFavorites = () => {
+    setPage('Favorites')
+  }
+
+  const openWatched = () => {
+    setPage('Watched')
+  }
 
   //**--------------------------------------------------**//
 
   return (
     <div className="App">
       <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
-      <SideNav />
-      <Body data={movieData} load={load}/>
+      <SideNav homeFunc={openHome} favFunc={openFavorites} watchFunc={openWatched}/>
+      <Body data={page !== 'Home' ? (page === 'Favorite' ? favMovies : watchedMovies) : movieData} load={load}/>
       <Footer />
     </div>
   )

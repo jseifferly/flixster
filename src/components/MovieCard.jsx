@@ -1,3 +1,4 @@
+import MovieButtons from './MovieButtons';
 import '../styles/MovieCard.css'
 
 function MovieCard({loadModal, title, image, rating}) {
@@ -7,6 +8,7 @@ function MovieCard({loadModal, title, image, rating}) {
             <img src={image} alt={title + " poster"} />
             <h3><strong>{title}</strong></h3>
             <p>Rating: {rating}</p>
+            <MovieButtons />
         </article>
     );
 

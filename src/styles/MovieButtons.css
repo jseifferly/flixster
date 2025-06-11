@@ -1,0 +1,11 @@
+.favButton {
+    margin: .5vw;
+    font-size: 2vw;
+    float: left;
+}
+
+.watchButton {
+    margin: .5vw;
+    font-size: 2vw;
+    float: right;
+}
