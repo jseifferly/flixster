@@ -79,9 +79,6 @@ const App = () => {
   //**------------------Sort Function-------------------**//
 
   useEffect(() => {
-  
-    console.log('do sort')
-    console.log(sortType)
     const sortedMovies = sort(movieData,sortType)
     setMovieData(sortedMovies)
 
