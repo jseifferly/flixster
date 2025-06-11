@@ -1,6 +1,6 @@
 import '../styles/Sort.css'
 
-function Sort() {
+function Sort({}) {
 
     return (
         <div className='SortBtn'>
