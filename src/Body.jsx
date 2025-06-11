@@ -1,11 +1,11 @@
 import MovieList from "./components/MovieList";
 import './Body.css'
 
-function Body({data}) {
+function Body({data, load}) {
 
     return (
         <div className="Body">
-            <MovieList data={data}/>
+            <MovieList data={data} load={load}/>
         </div>
     );
 
