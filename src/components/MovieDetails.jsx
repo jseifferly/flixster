@@ -49,7 +49,7 @@ export default function MovieDetails({movie}) {
     return (
         <div>
             <h2 className="movieTitle">{movie.title}</h2>
-            <img src={imgURL + posterSize + movie.backdrop_path} alt="" />
+            <img src={imgURL + posterSize + movie.backdrop_path} alt={movie.title + ' backdrop'} />
             <p><strong>Release Date:</strong> {movie.release_date}</p>
             <p><strong>Overview:</strong> {movie.overview}</p>
             <p><strong>Genres: </strong> {genreString(movieDetails.genres)}</p>
