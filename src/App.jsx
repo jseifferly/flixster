@@ -101,8 +101,16 @@ const App = () => {
     setPage('Home')
   }
 
+  const updateFavs = (movie,faved) => {
+    faved ? setFavMovies([...favMovies, movie]) : setFavMovies(favMovies.filter(element => element !== movie));
+  }
+
   const openFavorites = () => {
     setPage('Favorites')
+  }
+
+  const updateWatched = (movie, watched) => {
+    watched ? setWatchedMovies([...watchedMovies, movie]) : setWatchedMovies(watchedMovies.filter(element => element !== movie));
   }
 
   const openWatched = () => {
@@ -115,7 +123,8 @@ const App = () => {
     <div className="App">
       <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
       <SideNav homeFunc={openHome} favFunc={openFavorites} watchFunc={openWatched}/>
-      <Body data={page !== 'Home' ? (page === 'Favorite' ? favMovies : watchedMovies) : movieData} load={load}/>
+      <Body data={page !== 'Home' ? (page === 'Favorites' ? favMovies : watchedMovies) : movieData} load={load}
+            addToFav={updateFavs} addToWatch={updateWatched}/>
       <Footer />
     </div>
   )

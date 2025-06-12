@@ -4,7 +4,6 @@ import YoutubeEmbed from './YoutubeEmbed'
 export default function MovieDetails({movie}) {
 
     const [movieDetails, setMovieDetails] = useState(null)
-    const [videoData, setVideoData] = useState([])
     const [videoId, setVideoId] = useState('')
 
     //API Information for call to movie details
@@ -16,6 +15,10 @@ export default function MovieDetails({movie}) {
 
     useEffect(() => {
             const fetchMovieData =  async () => {
+                if(movie.id === undefined){
+                    return
+                }
+
                 try{
                     var res1 = await fetch(url, options)
                     var res2 = await fetch(videoUrl, options)

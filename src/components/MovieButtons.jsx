@@ -1,16 +1,33 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../styles/MovieButtons.css'
 
-export default function MovieButtons() {
+export default function MovieButtons({addToFav, addToWatched, movie}) {
 
-    const handleClick = evt => {
-        evt.stopPropigation();
+    const [faved, setFaved] = useState(false);
+    const [watched, setWatched] = useState(false)
+
+    useEffect(() => {
+        addToFav(movie,faved)
+    },[faved])
+
+    const updateFav= evt => {
+        evt.stopPropagation();
+        setFaved(!faved)
+    }
+
+    useEffect(() => {
+        addToWatched(movie,watched)
+    },[watched])
+
+    const updateWatch = evt => {
+        evt.stopPropagation();
+        setWatched(!watched)
     }
 
     return (
         <section className='buttonContainer'>
-            <span className='favButton' onClick={handleClick}>{'\u{1F90D}'}</span>
-            <span className='watchButton' onClick={handleClick}>{'\u{23F3}'}</span>
+            <span className='favButton' onClick={updateFav}>{faved? '\u{1F496}':'\u{1F90D}'}</span>
+            <span className='watchButton' onClick={updateWatch}>{watched ? '\u{231B}':'\u{23F3}'}</span>
         </section>
     );
 
