@@ -107,6 +107,7 @@ const App = () => {
   }
 
   const updateFavs = (movie,faved) => {
+    console.log('Updating Favs')
     faved ? setFavMovies([...favMovies, movie]) : setFavMovies(favMovies.filter(element => element !== movie));
   }
 
