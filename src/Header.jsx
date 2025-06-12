@@ -2,9 +2,6 @@ import SearchForm from "./components/SearchForm";
 import './Header.css'
 
 function Header({search,clear,searchTermFunction,searchString, sortFunc, display}) {
-
-    console.log(display)
-
     return (
         <section className="Header">
             <h1>Flixster</h1>

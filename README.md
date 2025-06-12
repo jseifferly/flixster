@@ -2,7 +2,7 @@
 
 Submitted by: **Jackson Seifferly**
 
-Estimated time spent: **6** hours spent in total
+Estimated time spent: **14** hours spent in total
 
 Deployed Application (**required**): [Flixster Deployed Site](ADD_LINK_HERE)
 
