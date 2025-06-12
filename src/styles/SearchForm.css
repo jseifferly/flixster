@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+.hideSearchForm {
+    display: none;
+}
+
 .SearchBar {
     width: 30vw;
 }

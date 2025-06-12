@@ -121,10 +121,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
+      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} 
+              searchString={searchString} sortFunc={updateSortType} display={page === 'Home'}/>
+
       <SideNav homeFunc={openHome} favFunc={openFavorites} watchFunc={openWatched}/>
+
       <Body data={page !== 'Home' ? (page === 'Favorites' ? favMovies : watchedMovies) : movieData} load={load}
             addToFav={updateFavs} addToWatch={updateWatched}/>
+
       <Footer />
     </div>
   )
