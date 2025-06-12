@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
 import Body from './Body'
+import SideNav from './components/SideNav'
 import Footer from './Footer'
 import sort from './utils/utils'
 import './App.css'
-import { use } from 'react'
 
 //API Info for fetch
 const API_KEY = import.meta.env.VITE_API_KEY
@@ -16,14 +16,20 @@ const App = () => {
   const [movieData, setMovieData] = useState([])
   const [pageNum, setPageNum] = useState(1)
 
+  //State Arrays for fav and watched movies
+  const [page,setPage] = useState('Home')
+  const [favMovies, setFavMovies] = useState([])
+  const [watchedMovies, setWatchedMovies] = useState([])
+
   //States to store search information
-  const [searchPage, setSearchPage] = useState(1)
+  const [searchPage, setSearchPage] = useState(0)
+  const [searchData, setSearchData] = useState([])
   const [searchString, setSearchString] = useState('')
+  const [searchTrigger, setSearchTrigger] = useState(0)
 
   //URL for featching data from API
   const nowPlayingURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}`
   const searchURL = `https://api.themoviedb.org/3/search/movie?query=${searchString}&page=${searchPage}`
-  const [url, setUrl] = useState(nowPlayingURL)
 
   //States for sort
   const [sortType, setSortType] = useState('none')
@@ -32,10 +38,16 @@ const App = () => {
   useEffect(() => {
       const fetchMovieData =  async () => {
           try{
-              var res = await fetch(url, options)
+              let searching = (searchString !== '');
+              let URL = searching ? searchURL : nowPlayingURL;
+              var res = await fetch(URL, options)
               if(res.ok){
                   const data = await res.json();
-                  setMovieData([...movieData, ...data.results]);
+                  if(searchString === ''){
+                    setMovieData([...movieData, ...data.results]);
+                  }else {
+                    setSearchData([...searchData, ...data.results])
+                  }
               }else{
                   throw new Error("API Not Responding")
               }
@@ -44,30 +56,28 @@ const App = () => {
           }
       }
       fetchMovieData();
-  },[url])
-
-  //Update the url for loading more movies
-  useEffect(() => {
-    setUrl(nowPlayingURL)
-  },[pageNum])
+  },[pageNum, searchTrigger])
 
   //Update page number to update the url
   const load = () => {
-    setPageNum(pageNum + 1)
+    if(searchString === '') {
+      setPageNum(pageNum + 1)
+    }else {
+      setSearchPage(searchPage + 1)
+      setSearchTrigger(searchTrigger + 1)
+    }
   }
 
   //**-----------------Search Function-----------------**//
   const clearSearch = () => {
-    setMovieData([])
+    setSearchData([])
     setSearchString('')
-    setSearchPage(1)
-    setPageNum(1)
-    setUrl(nowPlayingURL)
+    setPage('Home')
   }
 
   const search = () => {
-    setMovieData([])
-    setUrl(searchURL)
+    setSearchPage(1, setPage('Search'))
+    setSearchTrigger(searchTrigger + 1)
   }
 
   const updateSearchTerm = evt => {
@@ -81,7 +91,6 @@ const App = () => {
   useEffect(() => {
     const sortedMovies = sort(movieData,sortType)
     setMovieData(sortedMovies)
-
   },[sortType])
 
 
@@ -91,10 +100,40 @@ const App = () => {
 
   //**--------------------------------------------------**//
 
+  //**---------------Like/Watch Function----------------**//
+
+  const openHome = () => {
+    setPage('Home')
+  }
+
+  const updateFavs = (movie,faved) => {
+    faved ? setFavMovies([...favMovies, movie]) : setFavMovies(favMovies.filter(element => element !== movie));
+  }
+
+  const openFavorites = () => {
+    setPage('Favorites')
+  }
+
+  const updateWatched = (movie, watched) => {
+    watched ? setWatchedMovies([...watchedMovies, movie]) : setWatchedMovies(watchedMovies.filter(element => element !== movie));
+  }
+
+  const openWatched = () => {
+    setPage('Watched')
+  }
+
+  //**--------------------------------------------------**//
+
   return (
     <div className="App">
-      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} searchString={searchString} sortFunc={updateSortType}/>
-      <Body data={movieData} load={load}/>
+      <Header clear={clearSearch}  search={search} searchTermFunction={updateSearchTerm} 
+              searchString={searchString} sortFunc={updateSortType} display={page === 'Home' || page === 'Search'}/>
+
+      <SideNav homeFunc={openHome} favFunc={openFavorites} watchFunc={openWatched}/>
+
+      <Body data={page !== 'Home' ? (page !== 'Favorites' ? (page === 'Watched' ? watchedMovies : searchData) : favMovies) : movieData} load={load}
+            addToFav={updateFavs} addToWatch={updateWatched}/>
+
       <Footer />
     </div>
   )

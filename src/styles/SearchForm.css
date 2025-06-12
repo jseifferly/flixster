@@ -2,8 +2,12 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    padding: 1vw;
+    padding: 1vh 5vw;
     text-align: center;
+}
+
+.hideSearchForm {
+    display: none;
 }
 
 .SearchBar {

@@ -3,9 +3,9 @@ import './Footer.css'
 function Footer() {
 
     return (
-        <div className="Footer">
+        <section className="Footer">
             <p>@https://github.com/jseifferly/flixster</p>
-        </div>
+        </section>
     );
 
 }

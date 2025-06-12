@@ -1,0 +1,23 @@
+.favButton {
+    margin: .5vw;
+    font-size: 2vw;
+    float: left;
+    transition: .5s ease; 
+
+}
+
+.favButton:hover {
+    transform: scale(1.2);
+}
+
+.watchButton {
+    margin: .5vw;
+    font-size: 2vw;
+    float: right;
+    transition: .5s ease; 
+}
+
+
+.watchButton:hover {
+    transform: scale(1.2);
+}
