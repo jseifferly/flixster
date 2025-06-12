@@ -28,5 +28,4 @@ export default function MovieList({data,load,addToFav, addToWatch}) {
         <Modal display={show} closeModal={close} movie={mov}/>
         </>
     );
-
 }

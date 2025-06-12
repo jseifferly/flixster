@@ -43,6 +43,13 @@ const App = () => {
               var res = await fetch(URL, options)
               if(res.ok){
                   const data = await res.json();
+
+                  //Update movie data to store liked/watched info
+                  data.results.forEach((movie) => {
+                    movie.liked = false
+                    movie.watched = false
+                  })
+
                   if(searchString === ''){
                     setMovieData([...movieData, ...data.results]);
                   }else {
@@ -107,7 +114,13 @@ const App = () => {
   }
 
   const updateFavs = (movie,faved) => {
-    faved ? setFavMovies([...favMovies, movie]) : setFavMovies(favMovies.filter(element => element !== movie));
+    if(faved){
+      movie.liked = true
+      setFavMovies([...favMovies, movie]) 
+    }else{
+        movie.liked =false
+        setFavMovies(favMovies.filter(element => element !== movie));
+    }
   }
 
   const openFavorites = () => {
@@ -115,7 +128,13 @@ const App = () => {
   }
 
   const updateWatched = (movie, watched) => {
-    watched ? setWatchedMovies([...watchedMovies, movie]) : setWatchedMovies(watchedMovies.filter(element => element !== movie));
+    if(watched){
+      movie.watched = true
+      setWatchedMovies([...watchedMovies, movie]) 
+    }else{
+        movie.watched=false
+        setWatchedMovies(watchedMovies.filter(element => element !== movie));
+    }
   }
 
   const openWatched = () => {

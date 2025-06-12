@@ -3,18 +3,11 @@ import '../styles/MovieButtons.css'
 
 export default function MovieButtons({addToFav, addToWatched, movie}) {
 
-    const [faved, setFaved] = useState(false);
-    const [watched, setWatched] = useState(false);
-
-    const hadPageBeenRendered = useRef(false)
+    const [faved, setFaved] = useState(movie.liked);
+    const [watched, setWatched] = useState(movie.watched);
 
     useEffect(() => {
-        if(hadPageBeenRendered.current){
-            addToFav(movie,faved)
-            return
-        }
-
-        hadPageBeenRendered.current = true;
+        addToFav(movie,faved)
     },[faved])
 
     const updateFav= evt => {
@@ -23,12 +16,7 @@ export default function MovieButtons({addToFav, addToWatched, movie}) {
     }
 
     useEffect(() => {
-        if(hadPageBeenRendered.current){
-            addToWatched(movie,watched)
-            return
-        }
-
-        hadPageBeenRendered.current = true;
+        addToWatched(movie,watched)
     },[watched])
 
     const updateWatch = evt => {
