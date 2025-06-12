@@ -13,7 +13,6 @@ export default function MovieList({data,load,addToFav, addToWatch}) {
     const open = id => event => {
         setMov(data.find(movie => movie.id === id))
         setShow(true);
-
     }
 
     return (

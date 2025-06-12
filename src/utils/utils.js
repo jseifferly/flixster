@@ -11,5 +11,4 @@ export default function sort(arr,type) {
     }else {
         return arr
     }
-
 }

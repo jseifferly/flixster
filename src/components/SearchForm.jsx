@@ -9,7 +9,6 @@ function SearchForm({display, searchFunction, clearFunction, searchTerm, searchT
         }
     }
 
-
     return (
         <article className={display ? "SearchForm" : "hideSearchForm"}>
             <input value={searchTerm} type="text" placeholder="Search..." name="movieSearch" className="SearchBar" onChange={searchTermFunc} onKeyDown={handleEnter}/>
