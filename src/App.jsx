@@ -112,13 +112,11 @@ const App = () => {
     setPage('Home')
   }
 
-  const updateFavs = (movie,faved) => {
-    if(faved){
-      movie.liked = true
+  const updateFavs = (movie) => {
+    if(movie.liked){
       setFavMovies([...favMovies, movie]) 
     }else{
-        movie.liked =false
-        setFavMovies(favMovies.filter(element => element !== movie));
+      setFavMovies(favMovies.filter(element => element !== movie));
     }
   }
 
@@ -126,12 +124,10 @@ const App = () => {
     setPage('Favorites')
   }
 
-  const updateWatched = (movie, watched) => {
-    if(watched){
-      movie.watched = true
+  const updateWatched = (movie) => {
+    if(movie.watched){
       setWatchedMovies([...watchedMovies, movie]) 
     }else{
-        movie.watched=false
         setWatchedMovies(watchedMovies.filter(element => element !== movie));
     }
   }
