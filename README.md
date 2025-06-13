@@ -2,7 +2,7 @@
 
 Submitted by: **Jackson Seifferly**
 
-Estimated time spent: **18** hours spent in total
+Estimated time spent: **20** hours spent in total
 
 Deployed Application (**required**): [https://flixster-bs8p.onrender.com/]
 
@@ -108,15 +108,15 @@ Deployed Application (**required**): [https://flixster-bs8p.onrender.com/]
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I felt that almost all of the features that we had to implement in the project were covered by ideas in the labs, I found myself constantly looking back at past labs to refrence code I wrote there for my project. The only thing I felt a little unprepared for was the video embedding but with a bit of web searching it was actually relativly simple to implement.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+If I had more time I wish I could add more features to the site, maybe a list of theaters in the area playing the movie for each movie. And maybe some more filtering options for the type of search you can perform, like search for movies within a particular year or by rating.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+Talking with my peers a big thing I noticed was that a lot of people started the project by implementing some of the smaller features that were less code intensive which helped them quickly understand the layout of their project and how components would communicate with each other. I started with one of the bigger features which required a lot of inter-connected components which made it hard initially to figure out how the app features would communicate.
 
 ### Open-source libraries used
 
@@ -125,3 +125,7 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+- First shout out to bravemaster619 at [https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2] for his very good guide on embedding youtube video saved me a lot of headache
+
+- Shout out to my table mates again Ben, Kevin, and Thomas who all helped me bounce ideas of them and compare our features.
