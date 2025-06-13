@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
 import MovieCard from "./MovieCard";
 import '../styles/MovieList.css'
