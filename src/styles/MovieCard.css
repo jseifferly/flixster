@@ -1,6 +1,5 @@
 .MovieCard {
     margin: 1em;
-    flex-grow: 1;
     width: 15vw;
 
     transition: transform .6s ease;

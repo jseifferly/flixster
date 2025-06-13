@@ -146,7 +146,7 @@ const App = () => {
       <SideNav homeFunc={openHome} favFunc={openFavorites} watchFunc={openWatched}/>
 
       <Body data={page !== 'Home' ? (page !== 'Favorites' ? (page === 'Watched' ? watchedMovies : searchData) : favMovies) : movieData} load={load}
-            addToFav={updateFavs} addToWatch={updateWatched}/>
+            addToFav={updateFavs} addToWatch={updateWatched} display={page === 'Home' || page === 'Search'}/>
 
       <Footer />
     </div>

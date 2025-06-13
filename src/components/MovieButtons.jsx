@@ -16,7 +16,7 @@ export default function MovieButtons({addToFav, addToWatched, movie}) {
 
     return (
         <section className='buttonContainer'>
-            <span className='favButton' onClick={updateFav}>{movie.liked ? '\u{1F496}':'\u{1F90D}'}</span>
+            <span className='favButton' onClick={updateFav}>{movie.liked ? '\u{1F49A}':'\u{1F90D}'}</span>
             <span className='watchButton' onClick={updateWatch}>{movie.watched ? '\u{231B}':'\u{23F3}'}</span>
         </section>
     );
