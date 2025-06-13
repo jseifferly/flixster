@@ -10,5 +10,4 @@ export default function LoadButton() {
             <button className="loadMore">Load More</button>
         </div>
     );
-
 }

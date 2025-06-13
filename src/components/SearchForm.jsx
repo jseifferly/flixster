@@ -1,7 +1,7 @@
 import Sort from "./Sort";
 import '../styles/SearchForm.css'
 
-function SearchForm({display, searchFunction, clearFunction, searchTerm, searchTermFunc, sortFunc}) {
+export default function SearchForm({display, searchFunction, clearFunction, searchTerm, searchTermFunc, sortFunc}) {
 
     const handleEnter = evt => {
         if(evt.key === 'Enter'){
@@ -17,7 +17,4 @@ function SearchForm({display, searchFunction, clearFunction, searchTerm, searchT
             <Sort sort={sortFunc}/>
         </article>
     );
-
 }
-
-export default SearchForm

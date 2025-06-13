@@ -1,7 +1,7 @@
 import SearchForm from "./components/SearchForm";
 import './Header.css'
 
-function Header({search,clear,searchTermFunction,searchString, sortFunc, display}) {
+export default function Header({search,clear,searchTermFunction,searchString, sortFunc, display}) {
     return (
         <section className="Header">
             <h1>Flixster</h1>
@@ -10,7 +10,4 @@ function Header({search,clear,searchTermFunction,searchString, sortFunc, display
             searchTermFunc={searchTermFunction} sortFunc={sortFunc}/>
         </section>
     );
-
 }
-
-export default Header

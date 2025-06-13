@@ -9,5 +9,4 @@ export default function SideNav({homeFunc,favFunc,watchFunc}) {
             <p onClick={watchFunc}>{"\u{1F3C1}"}</p>
         </section>
     );
-
 }

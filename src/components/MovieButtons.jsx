@@ -20,5 +20,4 @@ export default function MovieButtons({addToFav, addToWatched, movie}) {
             <span className='watchButton' onClick={updateWatch}>{movie.watched ? '\u{2611}':'\u{2610}'}</span>
         </section>
     );
-
 }

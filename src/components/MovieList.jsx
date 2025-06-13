@@ -6,8 +6,8 @@ import '../styles/LoadButton.css'
 
 export default function MovieList({data,load,addToFav, addToWatch, display}) {
     //Modal state data
-    const [show, setShow] = useState(false);
     const [mov, setMov] = useState({})
+    const [show, setShow] = useState(false);
 
     const close = () => setShow(false);
     const open = id => event => {

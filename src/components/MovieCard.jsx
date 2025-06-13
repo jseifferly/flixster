@@ -4,7 +4,7 @@ import '../styles/MovieCard.css'
 const imgURL = 'https://image.tmdb.org/t/p'
 const posterSize = '/w500'
 
-function MovieCard({loadModal, addToFavs, addToWatched, movie}) {
+export default function MovieCard({loadModal, addToFavs, addToWatched, movie}) {
 
     return (
         <article className="MovieCard" onClick={loadModal}>
@@ -14,7 +14,4 @@ function MovieCard({loadModal, addToFavs, addToWatched, movie}) {
             <MovieButtons addToFav={addToFavs} addToWatched={addToWatched} movie={movie}/>
         </article>
     );
-
 }
-
-export default MovieCard

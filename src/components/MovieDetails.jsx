@@ -13,6 +13,7 @@ export default function MovieDetails({movie}) {
     const options = {method: 'GET', headers: {accept: 'application/json',
                 Authorization: `Bearer ${API_KEY}`}}
 
+    //Make API call for extra modal information
     useEffect(() => {
             const fetchMovieData =  async () => {
                 if(movie.id === undefined){
@@ -68,5 +69,4 @@ export default function MovieDetails({movie}) {
 
         </article>
     );
-
 }

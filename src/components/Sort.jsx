@@ -1,6 +1,6 @@
 import '../styles/Sort.css'
 
-function Sort({sort}) {
+export default function Sort({sort}) {
 
     return (
         <div className='SortBtn'>
@@ -12,7 +12,4 @@ function Sort({sort}) {
             </select>
         </div>
     );
-
 }
-
-export default Sort

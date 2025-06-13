@@ -1,3 +1,4 @@
+//Sort the given array based on type passed
 export default function sort(arr,type) {
 
     const sortedArr = [...arr]

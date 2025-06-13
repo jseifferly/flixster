@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import '../styles/Modal.css'
 import '../styles/Close.css'
 import MovieDetails from './MovieDetails';
@@ -20,5 +19,4 @@ export default function Modal({display, closeModal, movie}){
             </section>
         </div>
     );
-
 }

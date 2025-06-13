@@ -22,8 +22,8 @@ const App = () => {
   const [watchedMovies, setWatchedMovies] = useState([])
 
   //States to store search information
-  const [searchPage, setSearchPage] = useState(0)
   const [searchData, setSearchData] = useState([])
+  const [searchPage, setSearchPage] = useState(0)
   const [searchString, setSearchString] = useState('')
   const [searchTrigger, setSearchTrigger] = useState(0)
 
@@ -65,7 +65,7 @@ const App = () => {
       fetchMovieData();
   },[pageNum, searchTrigger])
 
-  //Update page number to update the url
+  //Load more movie data by updating page num on url
   const load = () => {
     if(searchString === '') {
       setPageNum(pageNum + 1)
