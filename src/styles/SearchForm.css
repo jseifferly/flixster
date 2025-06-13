@@ -1,6 +1,7 @@
 .SearchForm {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
     padding: 1vh 5vw;
     text-align: center;

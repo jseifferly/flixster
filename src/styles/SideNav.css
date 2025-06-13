@@ -1,6 +1,6 @@
 .SideNav {
     height: 100%;  
-    width: 5vw;  
+    width: 5%;  
     position: fixed; 
     z-index: 1; 
     top: 0; 
@@ -16,8 +16,7 @@
 }
 
 .SideNav p {
-    text-decoration: none;
-    font-size: 3vw;
+    font-size: 200%;
     color: black;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
