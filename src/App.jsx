@@ -83,6 +83,9 @@ const App = () => {
   }
 
   const search = () => {
+    if(searchString === ''){
+      return;
+    }
     setSearchPage(1, setPage('Search'))
     setSearchTrigger(searchTrigger + 1)
   }
