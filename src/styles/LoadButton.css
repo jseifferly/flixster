@@ -18,6 +18,10 @@
     box-shadow: 0 0 20px 
 }
 
+.loadMore:active {
+    transform: scale(.9);
+}
+
 .hide-load-more-button {
     display: none;
 }
