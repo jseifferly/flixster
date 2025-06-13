@@ -5,3 +5,16 @@
 
     padding: 5vw;
 }
+
+.no-movies-splash {
+    color: gray;
+    margin: auto;
+}
+
+.splash-text {
+    font-size: 2vw;
+}
+
+.splash-icon {
+    font-size: 30vw;
+}

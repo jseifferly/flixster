@@ -15,16 +15,25 @@ export default function MovieList({data,load,addToFav, addToWatch, display}) {
         setShow(true);
     }
 
-    return (
-        <>
-        <section className="MovieList">
-                {data.map((movie) => {
-                    return <MovieCard movie={movie} loadModal={open(movie.id)} key={movie.id}
-                    addToFavs={addToFav} addToWatched={addToWatch}/>
-                })}
-        </section>
-        <button className={display ? 'loadMore' : 'hide-load-more-button'} onClick={load}>Load More</button>
-        <Modal display={show} closeModal={close} movie={mov}/>
-        </>
-    );
+    if(data.length > 0){
+        return (
+            <>
+            <section className="MovieList">
+                    {data.map((movie) => {
+                        return <MovieCard movie={movie} loadModal={open(movie.id)} key={movie.id}
+                        addToFavs={addToFav} addToWatched={addToWatch}/>
+                    })}
+            </section>
+            <button className={display ? 'loadMore' : 'hide-load-more-button'} onClick={load}>Load More</button>
+            <Modal display={show} closeModal={close} movie={mov}/>
+            </>
+        );
+    }else {
+        return (
+            <div className="no-movies-splash">
+                <h2 className="splash-text">No movies here...</h2>
+                <h3 className="splash-icon">{'\u{2639}'}</h3>
+            </div>
+        );
+    }
 }
